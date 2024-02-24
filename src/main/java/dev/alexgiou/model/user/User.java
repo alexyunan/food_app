@@ -1,7 +1,10 @@
-package dev.alexgiou.model;
+package dev.alexgiou.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.alexgiou.dto.RestaurantDto;
+import dev.alexgiou.model.Address;
+import dev.alexgiou.model.BaseModel;
+import dev.alexgiou.model.order.Order;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;

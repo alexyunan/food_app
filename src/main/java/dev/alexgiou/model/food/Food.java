@@ -1,5 +1,7 @@
-package dev.alexgiou.model;
+package dev.alexgiou.model.food;
 
+import dev.alexgiou.model.BaseModel;
+import dev.alexgiou.model.IngredientsItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,9 +29,6 @@ public class Food extends BaseModel {
     private List<String> images;
 
     private boolean available;
-
-    @ManyToOne
-    private Restaurant restaurant;
 
     private boolean isVegetarian;
 

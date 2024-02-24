@@ -1,4 +1,4 @@
-package dev.alexgiou.model;
+package dev.alexgiou.model.user;
 
 public enum ROLE {
 
