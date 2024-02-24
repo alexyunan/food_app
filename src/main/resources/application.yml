@@ -3,10 +3,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/food_app
     username: alex
     password: password
-    hikari:
-      driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 server:
   port: 8081
