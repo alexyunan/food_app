@@ -2,7 +2,10 @@ package dev.alexgiou.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.alexgiou.dto.RestaurantDto;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -11,17 +14,18 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends  BaseModel{
+public class User extends BaseModel {
 
     private String fullName;
 
     private String email;
 
-    private  String password;
+    private String password;
 
-    private USER_ROLE role;
+    private ROLE role;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
@@ -30,7 +34,7 @@ public class User extends  BaseModel{
     @ElementCollection
     private List<RestaurantDto> favorites = new ArrayList<>();
 
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
 
 }
