@@ -1,6 +1,9 @@
 package dev.alexgiou.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.alexgiou.model.food.Food;
+import dev.alexgiou.model.order.Order;
+import dev.alexgiou.model.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
