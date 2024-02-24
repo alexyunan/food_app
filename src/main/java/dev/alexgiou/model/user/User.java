@@ -5,16 +5,14 @@ import dev.alexgiou.dto.RestaurantDto;
 import dev.alexgiou.model.Address;
 import dev.alexgiou.model.BaseModel;
 import dev.alexgiou.model.order.Order;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "\"user\"")
 @Getter
 @Setter
 @ToString
