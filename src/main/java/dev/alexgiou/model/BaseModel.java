@@ -1,7 +1,9 @@
 package dev.alexgiou.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +25,10 @@ public class BaseModel {
     private String description;
 
     private LocalDateTime createdAt;
+
+    @JsonIgnore
+    @ManyToOne
+    private Restaurant restaurant;
 
 
 }
