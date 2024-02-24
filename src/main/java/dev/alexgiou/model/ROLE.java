@@ -1,6 +1,6 @@
 package dev.alexgiou.model;
 
-public enum USER_ROLE {
+public enum ROLE {
 
     ROLE_CUSTOMER,
     ROLE_RESTAURANT_OWNER,
