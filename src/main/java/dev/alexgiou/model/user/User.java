@@ -26,7 +26,7 @@ public class User extends BaseModel {
 
     private String password;
 
-    private ROLE role;
+    private ROLE role = ROLE.ROLE_CUSTOMER;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
