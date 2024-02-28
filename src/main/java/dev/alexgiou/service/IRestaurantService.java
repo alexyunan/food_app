@@ -11,19 +11,19 @@ public interface IRestaurantService {
 
     Restaurant createRestaurant(CreateRestaurantRequest request, User user);
 
-    Restaurant updateRestaurant(Long restaurantId, CreateRestaurantRequest request);
+    Restaurant updateRestaurant(Long restaurantId, CreateRestaurantRequest request) throws Exception;
 
-    void deleteRestaurant(Long restaurantId);
+    void deleteRestaurant(Long restaurantId) throws Exception;
 
     List<Restaurant> getAllRestaurant();
 
-    List<Restaurant> searchRestaurant();
+    List<Restaurant> searchRestaurant(String keyword);
 
-    Restaurant findRestaurantById(Long restaurantId);
+    Restaurant findRestaurantById(Long restaurantId) throws Exception;
 
-    Restaurant getRestaurantByUserId(Long userId);
+    Restaurant getRestaurantByUserId(Long userId) throws Exception;
 
-    RestaurantDto addToFavorites(Long restaurantId, User user);
+    RestaurantDto addToFavorites(Long restaurantId, User user) throws Exception;
 
-    Restaurant updateRestaurantStatus(Long restaurantId);
+    Restaurant updateRestaurantStatus(Long restaurantId) throws Exception;
 }
