@@ -109,9 +109,15 @@ public class IRestaurantServiceImpl implements IRestaurantService {
         dto.setTitle(restaurant.getName());
         dto.setId(restaurantId);
 
-        if (user.getFavorites().contains(dto)) {
-            user.getFavorites().remove(dto);
-        } else user.getFavorites().add(dto);
+        boolean isFavorite = user.getFavorites()
+                .stream()
+                .anyMatch(favorite -> favorite.getId().equals(restaurantId));
+
+        if (isFavorite) {
+            user.getFavorites().removeIf(favorite -> favorite.getId().equals(restaurantId));
+        } else {
+            user.getFavorites().add(dto);
+        }
 
         userRepository.save(user);
 
