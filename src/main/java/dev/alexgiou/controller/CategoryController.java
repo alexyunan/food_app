@@ -52,6 +52,22 @@ public class CategoryController {
         } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> findCategoryById(@PathVariable("id") Long categoryId,
+                                                     @RequestHeader("Authorization") String token) {
+        try {
+            User user = userService.findUserByToken(token);
+            if (user == null) {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+
+            Category category = categoryService.findCategoryById(categoryId);
+            return new ResponseEntity<>(category, HttpStatus.OK);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
