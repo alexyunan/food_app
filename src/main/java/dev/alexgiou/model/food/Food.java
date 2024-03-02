@@ -3,16 +3,14 @@ package dev.alexgiou.model.food;
 import dev.alexgiou.model.BaseModel;
 import dev.alexgiou.model.IngredientsItem;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
