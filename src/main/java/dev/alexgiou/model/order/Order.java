@@ -34,5 +34,5 @@ public class Order extends BaseModel {
     private List<OrderItem> orderItems;
     private int totalItem;
 
-    private int totalPrice;
+    private Long totalPrice;
 }
