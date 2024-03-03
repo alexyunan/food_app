@@ -37,11 +37,22 @@ public class AdminRestaurantController {
             @RequestHeader("Authorization") String token,
             @PathVariable("id") Long restaurantId) throws Exception {
 
-        User user = userService.findUserByToken(token);
 
-        Restaurant restaurant = restaurantService.updateRestaurant(restaurantId, request);
+        try {
+            User user = userService.findUserByToken(token);
+            if (user == null) {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
 
-        return new ResponseEntity<>(restaurant, HttpStatus.OK);
+            Restaurant restaurant = restaurantService.updateRestaurant(restaurantId, request);
+
+            return new ResponseEntity<>(restaurant, HttpStatus.OK);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
     }
 
     @DeleteMapping("/{id}")
@@ -49,25 +60,44 @@ public class AdminRestaurantController {
             @RequestHeader("Authorization") String token,
             @PathVariable("id") Long restaurantId) throws Exception {
 
-        User user = userService.findUserByToken(token);
+        try {
+            User user = userService.findUserByToken(token);
+            if (user == null) {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
 
-        restaurantService.deleteRestaurant(restaurantId);
+            restaurantService.deleteRestaurant(restaurantId);
 
-        MessageResponse response = new MessageResponse();
-        response.setMessage("restaurant deleted successfully.");
+            MessageResponse response = new MessageResponse();
+            response.setMessage("restaurant deleted successfully.");
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
     }
 
     @PutMapping("/{id}/status")
     public ResponseEntity<Restaurant> updateRestaurantStatus(
             @RequestHeader("Authorization") String token,
-            @PathVariable("id") Long restaurantId) throws Exception {
+            @PathVariable("id") Long restaurantId) {
 
-        User user = userService.findUserByToken(token);
+        try {
+            User user = userService.findUserByToken(token);
+            if (user == null) {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
 
-        Restaurant restaurant = restaurantService.updateRestaurantStatus(restaurantId);
-        return new ResponseEntity<>(restaurant, HttpStatus.OK);
+            Restaurant restaurant = restaurantService.updateRestaurantStatus(restaurantId);
+            return new ResponseEntity<>(restaurant, HttpStatus.OK);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @GetMapping("/user")
