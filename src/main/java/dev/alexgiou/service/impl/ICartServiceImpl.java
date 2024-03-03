@@ -97,12 +97,15 @@ public class ICartServiceImpl implements ICartService {
     }
 
     @Override
-    public Cart findCartByUserId(Long userId) {
-        return cartRepository.findByCustomerId(userId);
+    public Cart findCartByUserId(Long userId) throws Exception {
+
+        Cart cart = cartRepository.findByCustomerId(userId);
+        cart.setTotal(calculateCartTotals(cart));
+        return cart;
     }
 
     @Override
-    public Cart clearCart(Long userId) {
+    public Cart clearCart(Long userId) throws Exception {
         Cart cart = findCartByUserId(userId);
         cart.getItems().clear();
         return cartRepository.save(cart);
